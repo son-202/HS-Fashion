@@ -77,6 +77,18 @@ body {
     background-color: #f1f5f9;
     color: #D97706;
 }
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #D1D5DB;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.form-input:focus {
+    outline: none;
+    border-color: #D97706;
+    box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.2);
+}
 
 /*---------- SLIDESHOW STYLES ----------*/
 .slide {

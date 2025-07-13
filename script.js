@@ -1,4 +1,40 @@
+document.addEventListener('DOMContentLoaded', () => {
+/*---------- UI ELEMENTS ----------*/
+    const loggedOutView = document.getElementById('auth-logged-out');
+    const loggedInView = document.getElementById('auth-logged-in');
+    const logoutBtn = document.getElementById('logout-btn');
+
+/*---------- STATE MANAGEMENT USING LOCALSTORAGE ----------*/
+    function checkLoginState() {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (isLoggedIn && loggedInView && loggedOutView) {
+            loggedOutView.classList.add('hidden');
+            loggedInView.classList.remove('hidden');
+            loggedInView.classList.add('flex');
+        } else if (loggedOutView && loggedInView) {
+            loggedOutView.classList.remove('hidden');
+            loggedInView.classList.add('hidden');
+            loggedInView.classList.remove('flex');
+        }
+        
+/*---------- PROTECT ROUTES ----------*/
+        const protectedPages = ['profile.html', 'cart.html'];
+        const currentPage = window.location.pathname.split('/').pop();
+        if (protectedPages.includes(currentPage) && !isLoggedIn) {
+            window.location.href = 'logIn.html';
+        }
+    }
 /*---------- EVENT LISTENERS ----------*/
+    /*---------- LOG OUT ----------*/
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('currentUser');
+            window.location.href = 'home.html';
+        });
+    }
     /*---------- PAGE-SPECIFIC LOGIC ----------*/
     const currentPage = window.location.pathname.split('/').pop();
 
@@ -100,3 +136,78 @@
         }
     }
 
+    /*---------- LOGIC FOR LOG IN PAGE ----------*/
+    if (currentPage === 'logIn.html') {
+        const loginView = document.getElementById('login-view');
+        const registerView = document.getElementById('register-view');
+        const showRegisterBtn = document.getElementById('show-register-btn');
+        const showLoginBtn = document.getElementById('show-login-btn');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+
+        if(showRegisterBtn && showLoginBtn) {
+            showRegisterBtn.addEventListener('click', () => {
+                loginView.classList.add('hidden');
+                registerView.classList.remove('hidden');
+            });
+
+            showLoginBtn.addEventListener('click', () => {
+                registerView.classList.add('hidden');
+                loginView.classList.remove('hidden');
+            });
+        }
+
+        if (loginForm) {
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+                const errorEl = document.getElementById('login-error');
+                
+                if (!email || !password) {
+                    errorEl.innerText = 'Please enter full email and password.';
+                    return;
+                }
+                
+                /*---------- SIMULATE SUCCESSFUL LOGIN ----------*/
+                const user = { name: 'Nguyen Hoang Son', email: email };
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                window.location.href = 'home.html';
+            });
+        }
+
+        if (registerForm) {
+            registerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('register-name').value;
+                const email = document.getElementById('register-email').value;
+                const password = document.getElementById('register-password').value;
+                const confirmPassword = document.getElementById('register-confirm-password').value;
+                const errorEl = document.getElementById('register-error');
+
+                if (!name || !email || !password || !confirmPassword) {
+                    errorEl.innerText = 'Please fill in all information.';
+                    return;
+                }
+                if (password.length <= 6) {
+                    errorEl.innerText = 'Password must be longer than 6 characters.';
+                    return;
+                }
+                if (password !== confirmPassword) {
+                    errorEl.innerText = 'Passwords do not match.';
+                    return;
+                }
+
+                /*---------- SIMULATE SUCCESSFUL REGISTRATION & LOGIN ----------*/
+                const user = { name: name, email: email };
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                window.location.href = 'profile.html';
+            });
+        }
+    }
+
+    /*---------- INITIAL LOAD ----------*/
+    checkLoginState();
+});
