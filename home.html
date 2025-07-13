@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HS-Fashion - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="home.html" class="text-3xl font-bold text-gray-800">HS-Fashion</a>
+            <nav class="hidden lg:flex items-center space-x-8">
+                <a href="home.html" class="text-gray-600 nav-link active">Home</a>
+                <a href="contact.html" class="text-gray-600 nav-link">Contact</a>
+            </nav>
+            <!-- Search Bar -->
+            <div class="relative hidden md:block flex-1 mx-8 max-w-md">
+                <input type="text" placeholder="Search products..." class="search-input">
+                <i class="fas fa-search absolute top-1/2 -translate-y-1/2 right-4 text-gray-400"></i>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div id="auth-logged-out" class="flex items-center space-x-4">
+                     <a href="logIn.html" class="btn btn-secondary">Log in</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Slideshow Banner -->
+        <section id="slideshow-container" class="relative w-full h-[80vh] overflow-hidden">
+            <!-- Slides will be injected by JS -->
+            <div class="slide active">
+                <img src="images/banner-1.avif" alt="Fashion Banner 2" class="w-full h-full object-cover">
+                <div class="slide-caption">
+                    <h1 class="text-5xl md:text-7xl font-extrabold mb-4">Office Wear</h1>
+                    <p class="text-xl mb-8">Elegant and professional.</p>
+                    <a href="#" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/banner-2.avif" alt="Fashion Banner 1" class="w-full h-full object-cover">
+                <div class="slide-caption">
+                    <h1 class="text-5xl md:text-7xl font-extrabold mb-4">Summer Collection</h1>
+                    <p class="text-xl mb-8">Discover your own style.</p>
+                    <a href="#" class="btn btn-primary bg-amber-600 hover:bg-amber-700">Shop Now</a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/banner-3.avif" alt="Fashion Banner 3" class="w-full h-full object-cover">
+                 <div class="slide-caption">
+                    <h1 class="text-5xl md:text-7xl font-extrabold mb-4">Unique Accessories</h1>
+                    <p class="text-xl mb-8">Complete your outfit.</p>
+                    <a href="#" class="btn btn-primary">Discover</a>
+                </div>
+            </div>
+            <!-- Navigation -->
+            <button id="prev-slide" class="slide-nav left-4"><i class="fas fa-chevron-left"></i></button>
+            <button id="next-slide" class="slide-nav right-4"><i class="fas fa-chevron-right"></i></button>
+        </section>
+
+        <!-- Category Section -->
+        <section class="container mx-auto px-6 py-16">
+            <div class="flex justify-center mb-12">
+                <div id="category-tabs" class="flex space-x-2 p-1 bg-gray-200 rounded-full">
+                    <button class="category-tab-button active" data-target="men">MEN</button>
+                    <button class="category-tab-button" data-target="women">WOMEN</button>
+                </div>
+            </div>
+
+            <!-- Tab Content -->
+            <div id="category-content">
+                <!-- Men's Category -->
+                <div id="category-men" class="category-tab-content active">
+                    <div class="category-grid">
+                        <a href="#" class="new-category-card group">
+                            <div class="category-image-wrapper">
+                                <img src="images/men-prod-images/T-shirt.avif" alt="T-Shirt" class="category-item-image">
+                            </div>
+                            <h3 class="mt-3 font-semibold text-center">T-Shirt</h3>
+                        </a>
+                        <a href="#" class="new-category-card group">
+                            <div class="category-image-wrapper">
+                                <img src="images/men-prod-images/Polo.avif" alt="Polo" class="category-item-image">
+                            </div>
+                            <h3 class="mt-3 font-semibold text-center">Polo</h3>
+                        </a>
+                        <a href="#" class="new-category-card group">
+                            <div class="category-image-wrapper">
+                                <img src="images/men-prod-images/Shorts.avif" alt="Shorts" class="category-item-image">
+                            </div>
+                            <h3 class="mt-3 font-semibold text-center">Shorts</h3>
+                        </a>
+                        <a href="#" class="new-category-card group">
+                            <div class="category-image-wrapper">
+                                <img src="images/men-prod-images/Trouser.avif" alt="Trouser" class="category-item-image">
+                            </div>
+                            <h3 class="mt-3 font-semibold text-center">Trouser</h3>
+                        </a>
+                        <a href="#" class="new-category-card group">
+                            <div class="category-image-wrapper">
+                                <img src="images/men-prod-images/Swimwear.avif" alt="Swimwear" class="category-item-image">
+                            </div>
+                            <h3 class="mt-3 font-semibold text-center">Swimwear</h3>
+                        </a>
+                        <a href="#" class="new-category-card group">
+                            <div class="category-image-wrapper">
+                                <img src="images/men-prod-images/Accessories.avif" alt="Accessories" class="category-item-image">
+                            </div>
+                            <h3 class="mt-3 font-semibold text-center">Accessories</h3>
+                        </a>
+                    </div>
+                </div>
+                <!-- Women's Category -->
+                <div id="category-women" class="category-tab-content">
+                     <div class="category-grid">
+                        <a href="#" class="new-category-card group">
+                            <div class="category-image-wrapper">
+                                <img src="images/women-prod-images/Dresses.avif" alt="Dresses" class="category-item-image">
+                            </div>
+                            <h3 class="mt-3 font-semibold text-center">Dresses</h3>
+                        </a>
+                        <a href="#" class="new-category-card group">
+                            <div class="category-image-wrapper">
+                                <img src="images/women-prod-images/Croptop.avif" alt="Croptops" class="category-item-image">
+                            </div>
+                            <h3 class="mt-3 font-semibold text-center">Croptops</h3>
+                        </a>
+                         <a href="#" class="new-category-card group">
+                            <div class="category-image-wrapper">
+                                <img src="images/women-prod-images/Skirt.avif" alt="Skirts" class="category-item-image">
+                            </div>
+                            <h3 class="mt-3 font-semibold text-center">Skirts</h3>
+                        </a>
+                         <a href="#" class="new-category-card group">
+                            <div class="category-image-wrapper">
+                                <img src="images/women-prod-images/Sportwear.avif" alt="Sportwear" class="category-item-image">
+                            </div>
+                            <h3 class="mt-3 font-semibold text-center">Sportwear</h3>
+                        </a>
+                         <a href="#" class="new-category-card group">
+                            <div class="category-image-wrapper">
+                                <img src="images/women-prod-images/Blouses.avif" alt="Blouses" class="category-item-image">
+                            </div>
+                            <h3 class="mt-3 font-semibold text-center">Blouses</h3>
+                        </a>
+                        <a href="#" class="new-category-card group">
+                            <div class="category-image-wrapper">
+                                <img src="images/women-prod-images/Accessories.avif" alt="Women's Accessories" class="category-item-image">
+                            </div>
+                            <h3 class="mt-3 font-semibold text-center">Accessories</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flash Sale Section -->
+        <section class="bg-red-50 py-16">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                    <h2 class="text-3xl font-bold text-red-600">FLASH SALE</h2>
+                    <div id="countdown-timer" class="flex items-center space-x-4 mt-4 md:mt-0">
+                        <span class="countdown-label">Ends in:</span>
+                        <div class="countdown-item">
+                            <span id="days" class="countdown-value">00</span>
+                            <span class="countdown-text">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span id="hours" class="countdown-value">00</span>
+                            <span class="countdown-text">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span id="minutes" class="countdown-value">00</span>
+                            <span class="countdown-text">Mins</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span id="seconds" class="countdown-value">00</span>
+                            <span class="countdown-text">Secs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Sale Product Card -->
+                    <div class="product-card group">
+                        <div class="sale-badge">-30%</div>
+                        <img src="images/women-prod-images/Floral_Dress.avif" alt="Product" class="product-card-image">
+                        <div class="p-6">
+                            <h3 class="font-semibold text-lg">Floral Dress</h3>
+                            <div class="flex items-baseline space-x-2 mt-1">
+                                <p class="text-red-600 font-bold text-lg">665,000đ</p>
+                                <p class="text-gray-500 line-through text-sm">950,000đ</p>
+                            </div>
+                            <button class="w-full mt-4 btn btn-primary">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card group">
+                         <div class="sale-badge">-20%</div>
+                        <img src="images/men-prod-images/Silk_Shirt.avif" alt="Product" class="product-card-image">
+                        <div class="p-6">
+                            <h3 class="font-semibold text-lg">Silk Shirt</h3>
+                             <div class="flex items-baseline space-x-2 mt-1">
+                                <p class="text-red-600 font-bold text-lg">496,000đ</p>
+                                <p class="text-gray-500 line-through text-sm">620,000đ</p>
+                            </div>
+                            <button class="w-full mt-4 btn btn-primary">Add to Cart</button>
+                        </div>
+                    </div>
+                     <div class="product-card group">
+                         <div class="sale-badge">-15%</div>
+                        <img src="images/men-prod-images/Bomber_Jacket.avif" alt="Product" class="product-card-image">
+                        <div class="p-6">
+                            <h3 class="font-semibold text-lg">Bomber Jacket</h3>
+                             <div class="flex items-baseline space-x-2 mt-1">
+                                <p class="text-red-600 font-bold text-lg">841,500đ</p>
+                                <p class="text-gray-500 line-through text-sm">990,000đ</p>
+                            </div>
+                            <button class="w-full mt-4 btn btn-primary">Add to Cart</button>
+                        </div>
+                    </div>
+                     <div class="product-card group">
+                         <div class="sale-badge">-25%</div>
+                        <img src="images/women-prod-images/Leather_Handbag.avif" alt="Product" class="product-card-image">
+                        <div class="p-6">
+                            <h3 class="font-semibold text-lg">Leather Handbag</h3>
+                             <div class="flex items-baseline space-x-2 mt-1">
+                                <p class="text-red-600 font-bold text-lg">562,500đ</p>
+                                <p class="text-gray-500 line-through text-sm">750,000đ</p>
+                            </div>
+                            <button class="w-full mt-4 btn btn-primary">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Promotional Banner 1 -->
+        <section class="my-16 container mx-auto px-6">
+            <a href="#" class="block promo-banner h-64 rounded-xl overflow-hidden" style="background-image: url('images/banner-1.avif');">
+                <div class="promo-caption">
+                    <h3 class="text-3xl font-bold">New Arrivals</h3>
+                    <p>The latest collection has arrived</p>
+                </div>
+            </a>
+        </section>
+
+        <!-- New Products Section -->
+        <section class="container mx-auto px-6 py-16">
+            <h2 class="text-3xl font-bold text-center mb-12">New Products</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                 <div class="product-card group">
+                    <img src="images/men-prod-images/T-shirt.avif" alt="Product" class="product-card-image">
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg">Basic T-Shirt</h3>
+                        <p class="text-gray-700 mt-1">350,000đ</p>
+                        <button class="w-full mt-4 btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card group">
+                    <img src="images/men-prod-images/jeans.avif "alt="Product" class="product-card-image">
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg">Skinny Jeans</h3>
+                        <p class="text-gray-700 mt-1">790,000đ</p>
+                        <button class="w-full mt-4 btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card group">
+                    <img src="images/women-prod-images/Tennis_skirt.avif" alt="Product" class="product-card-image">
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg">Tennis Skirt</h3>
+                        <p class="text-gray-700 mt-1">450,000đ</p>
+                        <button class="w-full mt-4 btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card group">
+                    <img src="images/women-prod-images/White_Sneakers.avif" alt="Product" class="product-card-image">
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg">White Sneakers</h3>
+                        <p class="text-gray-700 mt-1">1,200,000đ</p>
+                        <button class="w-full mt-4 btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Promotional Banner 2 -->
+        <section class="my-16 container mx-auto px-6">
+            <a href="#" class="block promo-banner h-64 rounded-xl overflow-hidden" style="background-image: url('images/banner-2.avif');">
+                <div class="promo-caption">
+                    <h3 class="text-3xl font-bold">End of Season Sale</h3>
+                    <p>Up to 50% off</p>
+                </div>
+            </a>
+        </section>
+
+        <!-- Recently Viewed Section -->
+        <section class="bg-gray-100 py-16">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">Recently Viewed</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Recently Viewed Product Card -->
+                    <div class="product-card group">
+                        <img src="images/women-prod-images/Dresses.avif" alt="Product" class="product-card-image">
+                        <div class="p-6">
+                            <h3 class="font-semibold text-lg">Evening Gown</h3>
+                            <p class="text-gray-700 mt-1">1,500,000đ</p>
+                            <button class="w-full mt-4 btn btn-primary">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- Repeat Recommended Product Card -->
+                    <div class="product-card group">
+                        <img src="images/men-prod-images/Trouser.avif" alt="Product" class="product-card-image">
+                        <div class="p-6">
+                            <h3 class="font-semibold text-lg">Trousers</h3>
+                            <p class="text-gray-700 mt-1">680,000đ</p>
+                            <button class="w-full mt-4 btn btn-primary">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card group">
+                        <img src="images/men-prod-images/Turtleneck_Sweater.avif" alt="Product" class="product-card-image">
+                        <div class="p-6">
+                            <h3 class="font-semibold text-lg">Turtleneck Sweater</h3>
+                            <p class="text-gray-700 mt-1">550,000đ</p>
+                            <button class="w-full mt-4 btn btn-primary">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card group">
+                        <img src="images/men-prod-images/Flattop_Sunglasses.avif" alt="Product" class="product-card-image">
+                        <div class="p-6">
+                            <h3 class="font-semibold text-lg">Flattop Sunglasses</h3>
+                            <p class="text-gray-700 mt-1">450,000đ</p>
+                            <button class="w-full mt-4 btn btn-primary">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">HS-FASHION</h3>
+                    <p class="text-gray-400">Your style, your story.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul>
+                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Return Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-tiktok text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500">
+                <p>&copy; 2025 HS-Fashion. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

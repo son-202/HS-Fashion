@@ -1,0 +1,298 @@
+body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background-color: #f8fafc; 
+    color: #1e293b;
+}
+.nav-link {
+    transition: color 0.3s;
+    position: relative;
+    padding-bottom: 4px;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #D97706;
+    transition: width 0.3s;
+}
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+.nav-link:hover {
+    color: #D97706;
+}
+.btn {
+    transition: all 0.3s ease;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-primary {
+    background-color: #1e293b;
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #334155;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.btn-secondary {
+    background-color: transparent;
+    color: #1e293b;
+    border: 1px solid #cbd5e1;
+}
+.btn-secondary:hover {
+     background-color: #f1f5f9;
+}
+.search-input {
+    width: 100%;
+    padding: 10px 16px;
+    padding-right: 40px;
+    border-radius: 9999px;
+    border: 1px solid #e2e8f0; 
+    background-color: #f8fafc;
+}
+.search-input:focus {
+    outline: none;
+    border-color: #D97706;
+    background-color: white;
+}
+.error-message {
+    color: #EF4444;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+.dashboard-nav-link {
+    display: block;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: background-color 0.2s, color 0.2s;
+    font-weight: 500;
+}
+.dashboard-nav-link.active, .dashboard-nav-link:hover {
+    background-color: #f1f5f9;
+    color: #D97706;
+}
+
+/*---------- SLIDESHOW STYLES ----------*/
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+}
+.slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+.slide-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 3;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.slide-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.slide-nav:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/*---------- NEW CATEGORY TAB STYLES ----------*/
+.category-tab-button {
+    padding: 8px 24px;
+    border-radius: 9999px;
+    font-weight: 600;
+    border: none;
+    background-color: transparent;
+    color: #4b5563;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+.category-tab-button.active {
+    background-color: white;
+    color: #1e293b;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.category-tab-content {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+.category-tab-content.active {
+    display: block;
+}
+.new-category-card {
+    display: block;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+    width: 150px;
+}
+@media (min-width: 1024px) { 
+    .new-category-card {
+        width: auto;
+    }
+}
+.new-category-card:hover {
+    transform: translateY(-5px);
+}
+.new-category-card img {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s;
+}
+.new-category-card:hover img {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+.category-image-wrapper {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+.group:hover .category-image-wrapper {
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+.category-item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+.group:hover .category-item-image {
+    transform: scale(1.1);
+}
+.category-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.category-grid::-webkit-scrollbar {
+    display: none;
+}
+@media (min-width: 1024px) {
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        overflow-x: visible;
+    }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/*---------- COUNTDOWN TIMER STYLES ----------*/
+.countdown-label {
+    font-weight: 600;
+    color: #333;
+}
+.countdown-item {
+    text-align: center;
+    background-color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    min-width: 60px;
+}
+.countdown-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #dc2626;
+    line-height: 1;
+}
+.countdown-text {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+/*---------- SALE BADGE STYLES ----------*/
+.sale-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background-color: #ef4444;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    z-index: 10;
+}
+
+/*---------- PROMOTIONAL BANNER STYLES ----------*/
+.promo-banner {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    transition: transform 0.4s ease;
+}
+.promo-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+    transition: background-color 0.4s;
+}
+.promo-banner:hover {
+    transform: scale(1.03);
+}
+.promo-banner:hover::before {
+    background-color: rgba(0,0,0,0.1);
+}
+.promo-caption {
+    position: relative;
+    z-index: 1;
+}
+
+/*----------  PRODUCT CARDS STYLES ----------*/
+.product-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    position: relative;
+}
+.product-card-image {
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+.group:hover .product-card-image {
+    transform: scale(1.05);
+}
