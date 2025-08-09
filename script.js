@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const protectedPages = ['profile.html', 'cart.html'];
         const currentPage = window.location.pathname.split('/').pop();
         if (protectedPages.includes(currentPage) && !isLoggedIn) {
-            window.location.href = 'logIn.html';
+            window.location.href = 'login.html';
         }
     }
     
@@ -154,8 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-// Logic for logIn.html
-    if (currentPage === 'logIn.html') {
+// Logic for login.html
+    if (currentPage === 'login.html') {
         const loginView = document.getElementById('login-view');
         const registerView = document.getElementById('register-view');
         const showRegisterBtn = document.getElementById('show-register-btn');
