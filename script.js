@@ -49,15 +49,15 @@ document.addEventListener('DOMContentLoaded', () => {
         logoutBtn.addEventListener('click', () => {
             localStorage.removeItem('isLoggedIn');
             localStorage.removeItem('currentUser');
-            window.location.href = 'home.html';
+            window.location.href = 'index.html';
         });
     }
 
     /*---------- PAGE-SPECIFIC LOGIC ----------*/
     const currentPage = window.location.pathname.split('/').pop();
 
-    /*---------- LOGIC FOR HOME.HTML ----------*/
-    if (currentPage === 'home.html' || currentPage === '') {
+    /*---------- LOGIC FOR index.html ----------*/
+    if (currentPage === 'index.html' || currentPage === '') {
         // Slideshow Logic
         const slides = document.querySelectorAll('.slide');
         const prevBtn = document.getElementById('prev-slide');
