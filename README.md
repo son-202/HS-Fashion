@@ -8,22 +8,13 @@ The website is deployed on GitHub Pages and can be viewed here:
 
 **[https://son-202.github.io/HS-Fashion/](https://son-202.github.io/HS-Fashion/)**
 
-*(Note: Replace `[YOUR_GITHUB_USERNAME]` and `[YOUR_REPOSITORY_NAME]` with your actual GitHub details.)*
-
-## 📸 Screenshots
-
-![HS-Fashion Website Demo]([paste_your_screenshot_link_here])
-
-*(Tip: You can take a screenshot, drag and drop it into a new GitHub issue to get a hosted image link, and then paste it here.)*
-
 ## 🚀 Key Features
 
 * **Modern & Responsive UI:**
     * A dynamic homepage featuring a slideshow, a countdown timer for flash sales, and product categories.
-    * Fully responsive design that works seamlessly on desktop, tablet, and mobile devices.
+    * Fully responsive design that works seamlessly on desktop and mobile devices.
 * **Complete Shopping Flow:**
     * Functional Shopping Cart page.
-    * A dedicated Checkout/Payment page.
 * **Simulated User Authentication:**
     * Login / Register system using the browser's `localStorage`.
     * Protected routes that require users to be logged in for access.
