@@ -6,19 +6,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /*---------- STATE MANAGEMENT USING LOCALSTORAGE ----------*/
     function checkLoginState() {
-        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-        if (isLoggedIn && loggedInView && loggedOutView) {
-            loggedOutView.classList.add('hidden');
-            loggedInView.classList.remove('hidden');
-            loggedInView.classList.add('flex');
-        } else if (loggedOutView && loggedInView) {
-            loggedOutView.classList.remove('hidden');
-            loggedInView.classList.add('hidden');
-            loggedInView.classList.remove('flex');
+    const loggedOutHeader = document.getElementById('auth-logged-out');
+    const loggedInHeader = document.getElementById('auth-logged-in');
+    const sidebarLoggedOutNav = document.getElementById('sidebar-logged-out');
+    const sidebarLoggedInNav = document.getElementById('sidebar-logged-in');
+
+    if (isLoggedIn) {
+        if (loggedOutHeader) loggedOutHeader.classList.add('hidden');
+        if (loggedInHeader) {
+            loggedInHeader.classList.remove('hidden');
+            loggedInHeader.classList.add('lg:flex');
         }
         
+        if (sidebarLoggedOutNav) sidebarLoggedOutNav.classList.add('hidden');
+        if (sidebarLoggedInNav) sidebarLoggedInNav.classList.remove('hidden');
+
+    } else {
+        if (loggedOutHeader) loggedOutHeader.classList.remove('hidden');
+        if (loggedInHeader) loggedInHeader.classList.add('hidden');
+
+        if (sidebarLoggedOutNav) sidebarLoggedOutNav.classList.remove('hidden');
+        if (sidebarLoggedInNav) sidebarLoggedInNav.classList.add('hidden');
+    }
 /*---------- UPDATE PROFILE DASHBOARD IF ON PROFILE PAGE ----------*/
         if (isLoggedIn && currentUser && window.location.pathname.includes('profile.html')) {
              updateProfileDashboard(currentUser);
@@ -45,12 +57,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /*---------- EVENT LISTENERS ----------*/
     /*---------- LOG OUT ----------*/
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', () => {
-            localStorage.removeItem('isLoggedIn');
-            localStorage.removeItem('currentUser');
-            window.location.href = 'index.html';
-        });
+    // --- LOGIC LOGOUT ---
+    const logoutBtnDesktop = document.getElementById('logout-btn-desktop');
+    const logoutBtnSidebar = document.getElementById('logout-btn-sidebar');
+    
+    function handleLogout() {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('currentUser');
+        window.location.href = 'index.html';
+    }
+
+    if (logoutBtnDesktop) {
+        logoutBtnDesktop.addEventListener('click', handleLogout);
+    }
+    if (logoutBtnSidebar) {
+        logoutBtnSidebar.addEventListener('click', handleLogout);
     }
 
     /*---------- PAGE-SPECIFIC LOGIC ----------*/
@@ -269,5 +290,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
+    }
+/*---------- LOGIC FOR SIDEBAR MENU ----------*/
+    const openSidebarBtn = document.getElementById('open-sidebar-btn');
+    const sidebarMenu = document.getElementById('sidebar-menu');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
+    const closeSidebarBtn = document.getElementById('close-sidebar-btn');
+
+    function openSidebar() {
+            if (sidebarMenu && sidebarOverlay) {
+                sidebarMenu.classList.add('active');
+                sidebarOverlay.classList.add('active');
+            }
+        }
+
+        function closeSidebar() {
+            if (sidebarMenu && sidebarOverlay) {
+                sidebarMenu.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+            }
+        }
+
+        if (openSidebarBtn) {
+            openSidebarBtn.addEventListener('click', openSidebar);
+        }
+        if (closeSidebarBtn) {
+            closeSidebarBtn.addEventListener('click', closeSidebar);
+        }
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', closeSidebar);
     }
 });

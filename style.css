@@ -417,8 +417,6 @@ body {
 
 /*---------- PROFILE PAGE STYLES ----------*/
 
-/*---------- PROFILE PAGE STYLES (ĐÃ SỬA LỖI RESPONSIVE) ----------*/
-
 .profile-container {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -429,7 +427,7 @@ body {
     max-width: 80rem;
     display: grid;
     gap: 2rem;
-    grid-template-columns: repeat(1, minmax(0, 1fr)); /* Mặc định 1 cột */
+    grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 .profile-sidebar-card {
     background-color: #ffffff;
@@ -469,7 +467,7 @@ body {
     margin-bottom: 2rem;
     display: grid;
     gap: 1.5rem;
-    grid-template-columns: repeat(1, minmax(0, 1fr)); /* Mặc định 1 cột */
+    grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 .profile-stat-item {
     padding: 1rem;
@@ -505,8 +503,6 @@ body {
 .profile-form-grid { display: grid; gap: 1.5rem; padding-top: 1rem; }
 .profile-form-group-full { grid-column: span 1 / span 1; }
 .profile-form-button-container { display: flex; justify-content: flex-end; margin-top: 1.5rem; }
-
-/* Responsive cho màn hình tablet trở lên */
 @media (min-width: 768px) {
     .profile-stats-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -518,8 +514,6 @@ body {
         grid-column: span 2 / span 2;
     }
 }
-
-/* Responsive cho màn hình desktop */
 @media (min-width: 1024px) {
     .profile-container {
         grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -763,4 +757,81 @@ body {
     .cart-item-remove-btn {
         margin-left: 1rem;
     }
+}
+
+/*---------- SIDEBAR MENU STYLES ----------*/
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    max-width: 80%;
+    height: 100%;
+    background-color: white;
+    box-shadow: -4px 0 16px rgba(0,0,0,0.1);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.sidebar-menu.active {
+    right: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #f3f4f6;
+}
+.sidebar-title {
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+.sidebar-close-btn {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.sidebar-nav {
+    padding: 1rem;
+    flex-grow: 1;
+}
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+.sidebar-link:hover {
+    background-color: #f1f5f9;
+}
+
+.sidebar-footer {
+    padding: 1.5rem;
+    border-top: 1px solid #f3f4f6;
 }
