@@ -19,6 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
             loggedInView.classList.remove('flex');
         }
         
+/*---------- UPDATE PROFILE DASHBOARD IF ON PROFILE PAGE ----------*/
+        if (isLoggedIn && currentUser && window.location.pathname.includes('profile.html')) {
+             updateProfileDashboard(currentUser);
+        }
+
 /*---------- PROTECT ROUTES ----------*/
         const protectedPages = ['profile.html', 'cart.html'];
         const currentPage = window.location.pathname.split('/').pop();
@@ -26,6 +31,18 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'logIn.html';
         }
     }
+    
+    function updateProfileDashboard(user) {
+        const nameEl = document.getElementById('profile-dashboard-name');
+        const emailEl = document.getElementById('profile-dashboard-email');
+        const welcomeEl = document.getElementById('profile-welcome-name');
+        if (nameEl && emailEl && welcomeEl) {
+            nameEl.innerText = user.name;
+            emailEl.innerText = user.email;
+            welcomeEl.innerText = user.name;
+        }
+    }
+
 /*---------- EVENT LISTENERS ----------*/
     /*---------- LOG OUT ----------*/
     if (logoutBtn) {
@@ -35,12 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'home.html';
         });
     }
+
     /*---------- PAGE-SPECIFIC LOGIC ----------*/
     const currentPage = window.location.pathname.split('/').pop();
 
     /*---------- LOGIC FOR HOME.HTML ----------*/
     if (currentPage === 'home.html' || currentPage === '') {
-        /*---------- SLIDESHOW LOGIC ----------*/
+        // Slideshow Logic
         const slides = document.querySelectorAll('.slide');
         const prevBtn = document.getElementById('prev-slide');
         const nextBtn = document.getElementById('next-slide');
@@ -86,10 +104,10 @@ document.addEventListener('DOMContentLoaded', () => {
             startSlideShow();
         }
 
-        /*---------- COUNTDOWN TIMER LOGIC ----------*/
+        // Countdown Timer Logic
         const countdownTimer = document.getElementById('countdown-timer');
         if(countdownTimer) {
-            /*---------- SET THE DATE FOR THE END OF THE SALE (E.G., 3 DAYS FROM NOW) ----------*/
+            // Set the date for the end of the sale (e.g., 3 days from now)
             const countdownDate = new Date().getTime() + 3 * 24 * 60 * 60 * 1000;
 
             const countdownInterval = setInterval(() => {
@@ -108,23 +126,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (distance < 0) {
                     clearInterval(countdownInterval);
-                    countdownTimer.innerHTML = "<span class='text-red-600 font-bold'>Flash Sale is over!</span>";
+                    countdownTimer.innerHTML = "<span class='text-red-600 font-bold'>Flash Sale is Over!</span>";
                 }
             }, 1000);
         }
 
-        /*---------- CATEGORY TABS LOGIC ----------*/
+        // Category Tabs Logic
         const categoryTabs = document.querySelectorAll('.category-tab-button');
         const categoryContents = document.querySelectorAll('.category-tab-content');
 
         if (categoryTabs.length > 0) {
             categoryTabs.forEach(tab => {
-                tab.addEventListener('click', () => {     
-                    /*---------- DEACTIVE ALL TABS AND CONTENT----------*/
+                tab.addEventListener('click', () => {
+                    // Deactivate all tabs and content
                     categoryTabs.forEach(t => t.classList.remove('active'));
                     categoryContents.forEach(c => c.classList.remove('active'));
 
-                    /*---------- ACTIVE CLICKED TABS AND CONTENT----------*/
+                    // Activate clicked tab and corresponding content
                     tab.classList.add('active');
                     const targetId = `category-${tab.dataset.target}`;
                     const targetContent = document.getElementById(targetId);
@@ -136,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /*---------- LOGIC FOR LOG IN PAGE ----------*/
+// Logic for logIn.html
     if (currentPage === 'logIn.html') {
         const loginView = document.getElementById('login-view');
         const registerView = document.getElementById('register-view');
@@ -144,6 +162,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const showLoginBtn = document.getElementById('show-login-btn');
         const loginForm = document.getElementById('login-form');
         const registerForm = document.getElementById('register-form');
+
+        // Helper function to validate email format
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
 
         if(showRegisterBtn && showLoginBtn) {
             showRegisterBtn.addEventListener('click', () => {
@@ -163,17 +187,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 const email = document.getElementById('login-email').value;
                 const password = document.getElementById('login-password').value;
                 const errorEl = document.getElementById('login-error');
-                
+                errorEl.innerText = ''; // Clear previous errors
+
+                // Validation checks
                 if (!email || !password) {
-                    errorEl.innerText = 'Please enter full email and password.';
+                    errorEl.innerText = 'Please enter both email and password.';
+                    return;
+                }
+                if (!isValidEmail(email)) {
+                    errorEl.innerText = 'Please enter a valid email address.';
                     return;
                 }
                 
-                /*---------- SIMULATE SUCCESSFUL LOGIN ----------*/
+                // SIMULATE SUCCESSFUL LOGIN
                 const user = { name: 'Nguyen Hoang Son', email: email };
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('currentUser', JSON.stringify(user));
-                window.location.href = 'home.html';
+                window.location.href = 'profile.html';
             });
         }
 
@@ -185,9 +215,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const password = document.getElementById('register-password').value;
                 const confirmPassword = document.getElementById('register-confirm-password').value;
                 const errorEl = document.getElementById('register-error');
+                errorEl.innerText = ''; // Clear previous errors
 
+                // Validation checks
                 if (!name || !email || !password || !confirmPassword) {
-                    errorEl.innerText = 'Please fill in all information.';
+                    errorEl.innerText = 'Please fill in all fields.';
+                    return;
+                }
+                if (!isValidEmail(email)) {
+                    errorEl.innerText = 'Please enter a valid email address.';
                     return;
                 }
                 if (password.length <= 6) {
@@ -199,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                /*---------- SIMULATE SUCCESSFUL REGISTRATION & LOGIN ----------*/
+                // SIMULATE SUCCESSFUL REGISTRATION & LOGIN
                 const user = { name: name, email: email };
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('currentUser', JSON.stringify(user));
@@ -207,7 +243,31 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-
-    /*---------- INITIAL LOAD ----------*/
+    // --- Initial Load ---
     checkLoginState();
+
+/*---------- LOGIC FOR PROFILE PAGE ----------*/
+    if (currentPage === 'profile.html') {
+        const profileNav = document.getElementById('profile-nav');
+        const navLinks = profileNav.querySelectorAll('.dashboard-nav-link');
+        const views = document.querySelectorAll('.profile-view-container');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const targetId = link.getAttribute('data-target');
+                if (!targetId) return;
+                
+                navLinks.forEach(l => l.classList.remove('active'));
+                views.forEach(v => v.classList.remove('active'));
+
+                link.classList.add('active');
+                const targetView = document.getElementById(targetId);
+                if (targetView) {
+                    targetView.classList.add('active');
+                }
+            });
+        });
+    }
 });

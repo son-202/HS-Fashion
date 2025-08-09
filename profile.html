@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HS-Fashion - Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="home.html" class="text-3xl font-bold text-gray-800">HS-Fashion</a>
+            <nav class="hidden lg:flex items-center space-x-8">
+                <a href="home.html" class="text-gray-600 nav-link">Home</a>
+                <a href="contact.html" class="text-gray-600 nav-link">Contact</a>
+            </nav>
+            <div class="relative hidden md:block flex-1 mx-8 max-w-md">
+                <input type="text" placeholder="Search products..." class="search-input">
+                <i class="fas fa-search absolute top-1/2 -translate-y-1/2 right-4 text-gray-400"></i>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div id="auth-logged-out" class="flex items-center space-x-4">
+                     <a href="logIn.html" class="btn btn-secondary">Log in</a>
+                </div>
+                <div id="auth-logged-in" class="hidden items-center space-x-5">
+                    <a href="cart.html" class="text-gray-600 nav-link" title="Cart"><i class="fas fa-shopping-cart text-xl"></i></a>
+                    <a href="profile.html" class="text-gray-600 nav-link" title="My Account"><i class="fas fa-user-circle text-2xl"></i></a>
+                    <button id="logout-btn" class="text-gray-500 hover:text-red-500" title="Logout"><i class="fas fa-sign-out-alt text-xl"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="profile-container">
+            <aside class="profile-sidebar">
+                <div class="profile-sidebar-card">
+                     <div class="profile-avatar-section">
+                        <img src="https://placehold.co/150x150/e0e0e0/333?text=AVT" alt="User Avatar" class="profile-avatar-img">
+                        <h3 id="profile-dashboard-name" class="text-xl font-semibold"></h3>
+                        <p id="profile-dashboard-email" class="text-gray-500"></p>
+                    </div>
+                    <nav id="profile-nav" class="space-y-2">
+                        <a href="#" class="dashboard-nav-link active" data-target="dashboard-view"><i class="fas fa-tachometer-alt w-6 mr-2"></i>Dashboard</a>
+                        <a href="#" class="dashboard-nav-link" data-target="edit-profile-view"><i class="fas fa-user-edit w-6 mr-2"></i>Edit Profile</a>
+                        <a href="#" class="dashboard-nav-link"><i class="fas fa-box-open w-6 mr-2"></i>Order History</a>
+                        <a href="#" class="dashboard-nav-link"><i class="fas fa-heart w-6 mr-2"></i>Wishlist</a>
+                    </nav>
+                </div>
+            </aside>
+
+            <div class="profile-main-content">
+                <div class="profile-main-card">
+
+                    <div id="dashboard-view" class="profile-view-container active">
+                        <h2 class="profile-welcome-heading">Welcome back, <span id="profile-welcome-name"></span>!</h2>
+                        <p class="profile-welcome-subheading">This is your account dashboard where you can manage your info and orders.</p>
+                        <div class="profile-stats-grid">
+                            <div class="profile-stat-item processing"><p class="profile-stat-value processing">2</p><p class="profile-stat-label processing">Orders Processing</p></div>
+                            <div class="profile-stat-item delivered"><p class="profile-stat-value delivered">5</p><p class="profile-stat-label delivered">Orders Delivered</p></div>
+                            <div class="profile-stat-item wishlist"><p class="profile-stat-value wishlist">3</p><p class="profile-stat-label wishlist">Items in Wishlist</p></div>
+                        </div>
+                        <h3 class="profile-recent-orders-heading">Recent Order History</h3>
+                        <div class="profile-orders-table-wrapper">
+                            <table class="profile-orders-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Date</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#12345</td>
+                                        <td>20/06/2025</td>
+                                        <td>1,140,000đ</td>
+                                        <td><span class="profile-status-badge delivered">Delivered</span></td>
+                                        <td><a href="#" class="profile-view-details-link">View Details</a></td>
+                                    </tr>
+                                     <tr>
+                                        <td>#12344</td>
+                                        <td>15/05/2025</td>
+                                        <td>790,000đ</td>
+                                        <td><span class="profile-status-badge delivered">Delivered</span></td>
+                                        <td><a href="#" class="profile-view-details-link">View Details</a></td>
+                                    </tr>
+                                     <tr>
+                                        <td>#12350</td>
+                                        <td>28/06/2025</td>
+                                        <td>620,000đ</td>
+                                        <td><span class="profile-status-badge processing">Processing</span></td>
+                                        <td><a href="#" class="profile-view-details-link">View Details</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="edit-profile-view" class="profile-view-container">
+                        <h2 class="profile-welcome-heading">Edit Profile</h2>
+                        <p class="profile-welcome-subheading">Update your personal information below.</p>
+                        
+                        <form id="edit-profile-form">
+                            <div class="profile-form-grid">
+                                <div class="profile-form-group-full">
+                                    <label for="profile-name" class="contact-form-label">Full Name</label>
+                                    <input type="text" id="profile-name" class="form-input" value="Nguyen Hoang Son">
+                                </div>
+                                <div class="profile-form-group-full">
+                                    <label for="profile-email" class="contact-form-label">Email Address</label>
+                                    <input type="email" id="profile-email" class="form-input" value="test@gmail.com" disabled>
+                                </div>
+                                <div>
+                                    <label for="profile-phone" class="contact-form-label">Phone Number</label>
+                                    <input type="tel" id="profile-phone" class="form-input" value="0901234567">
+                                </div>
+                                <div>
+                                    <label for="profile-dob" class="contact-form-label">Date of Birth</label>
+                                    <input type="date" id="profile-dob" class="form-input">
+                                </div>
+                                <div class="profile-form-group-full">
+                                    <label for="profile-address" class="contact-form-label">Address</label>
+                                    <input type="text" id="profile-address" class="form-input" value="123 Fashion Street, District 1, HCMC">
+                                </div>
+                            </div>
+                            <div class="profile-form-button-container">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">HS-FASHION</h3>
+                    <p class="text-gray-400">Your style, your story.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul>
+                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Return Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-tiktok text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500">
+                <p>&copy; 2025 HS-FASHION. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

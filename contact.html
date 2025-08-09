@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HS-Fashion - Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="home.html" class="text-3xl font-bold text-gray-800">HS-Fashion</a>
+            <nav class="hidden lg:flex items-center space-x-8">
+                <a href="home.html" class="text-gray-600 nav-link">Home</a>
+                <a href="contact.html" class="text-gray-600 nav-link active">Contact</a>
+            </nav>
+            <div class="relative hidden md:block flex-1 mx-8 max-w-md">
+                <input type="text" placeholder="Search products..." class="search-input">
+                <i class="fas fa-search absolute top-1/2 -translate-y-1/2 right-4 text-gray-400"></i>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div id="auth-logged-out" class="flex items-center space-x-4">
+                     <a href="logIn.html" class="btn btn-secondary">Log in</a>
+                </div>
+                <div id="auth-logged-in" class="hidden items-center space-x-5">
+                    <a href="cart.html" class="text-gray-600 nav-link" title="Cart"><i class="fas fa-shopping-cart text-xl"></i></a>
+                    <a href="profile.html" class="text-gray-600 nav-link" title="My Account"><i class="fas fa-user-circle text-2xl"></i></a>
+                    <button id="logout-btn" class="text-gray-500 hover:text-red-500" title="Logout"><i class="fas fa-sign-out-alt text-xl"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="contact-page-container">
+            <h2 class="contact-page-heading">Contact HS-FASHION</h2>
+            <div class="contact-card">
+                <div>
+                    <h3 class="contact-info-heading">Contact Information</h3>
+                    <p class="contact-info-item">
+                        <i class="fas fa-map-marker-alt contact-info-icon"></i>123 Fashion Street, District 1, HCMC
+                    </p>
+                    <p class="contact-info-item">
+                        <i class="fas fa-phone contact-info-icon"></i>(012) 3456 9999
+                    </p>
+                    <p class="contact-info-item mb-4">
+                        <i class="fas fa-envelope contact-info-icon"></i>support@hs-fashion.com
+                    </p>
+                    <div class="contact-map-container">
+                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.447914489833!2d106.69539361474939!3d10.77698999232104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f38f9ed8f6b%3A0x7a8bfd6e3e5a7b0!2sIndependence%20Palace!5e0!3m2!1sen!2s!4v1628578332155!5m2!1sen!2s" 
+                                 class="contact-map-iframe" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <form>
+                    <h3 class="contact-form-heading">Send us a message</h3>
+                    <div class="contact-form-group">
+                        <label for="name" class="contact-form-label">Full Name</label>
+                        <input type="text" id="name" class="form-input">
+                    </div>
+                    <div class="contact-form-group">
+                        <label for="email" class="contact-form-label">Email</label>
+                        <input type="email" id="email" class="form-input">
+                    </div>
+                    <div class="contact-form-group">
+                        <label for="message" class="contact-form-label">Message</label>
+                        <textarea id="message" rows="5" class="form-input"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">HS-FASHION</h3>
+                    <p class="text-gray-400">Your style, your story.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul>
+                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Return Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-tiktok text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500">
+                <p>&copy; 2025 HS-FASHION. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
